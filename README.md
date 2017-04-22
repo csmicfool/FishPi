@@ -16,4 +16,10 @@ Hardware:
 
 Wiring:
 - [FILL IN GPIO INFO HERE LATER]
-- Intentionally not providing wiring guidance for the AC circuits as this can be applied in many ways and should only be done by those who are competent.  See earlier warnings about amateur electrical work.  YOU CAN BURN YOUR HOUSE DOWN.  PLEASE DONT BURN YOUR HOUSE DOWN.  THIS IS AT YOUR OWN RISK.
+- Intentionally not providing wiring guidance for the AC circuits as this can be applied in many ways and should only be done by those who are competent.  See earlier warnings about amateur electrical work.  YOU CAN BURN YOUR HOUSE DOWN.  PLEASE DONT BURN YOUR HOUSE DOWN.  THIS IS AT YOUR OWN RISK
+
+Installation:
+- See prerequisites above
+- Copy to web directory
+- Configure the config.json file according to your tank and accessory specs, location, etc.  Use the provided file as an example.
+- Ensure that config.json and state.json are both writeable by your web server.
