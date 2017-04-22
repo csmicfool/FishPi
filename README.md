@@ -51,5 +51,7 @@ Modular Aquarium Controller Project for RaspberryPi and similar devices
 - Copy to web directory
 - Configure the config.json file according to your tank and accessory specs, location, etc.  Use the provided file as an example.
 - Ensure that config.json and state.json are both writeable by your web server.
+- Add a command to `rc.local` so that ./utils/init.php runs at startup.  For example: `php /var/www/html/utils/init.php`
+- Add a command to the root crontab to run ./utils/schedule.php every minute.  For example: `* * * * * php /var/www/html/utils/schedule.php >/dev/null 2>&1`
 
 ## Please post issues in Github
