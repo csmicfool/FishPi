@@ -23,3 +23,5 @@ Installation:
 - Copy to web directory
 - Configure the config.json file according to your tank and accessory specs, location, etc.  Use the provided file as an example.
 - Ensure that config.json and state.json are both writeable by your web server.
+
+Please post issues in Github
