@@ -1,0 +1,91 @@
+{
+    "latitude": "25.7617",
+    "longitude": "-80.1918",
+    "timezone": "America\/New_York",
+    "tanks": [
+        {
+            "name": "Planted Community",
+            "size": "75",
+            "units": "gallons",
+            "sensors": [],
+            "accessories": [
+                {
+                    "name": "CO2 Solenoid",
+                    "gpio_pin": "6",
+                    "outlet": 1,
+                    "schedule": "co2_plan",
+                    "automatic": 1
+                },
+                {
+                    "name": "Power Head",
+                    "gpio_pin": "5",
+                    "outlet": 2,
+                    "schedule": "wavetimer_plan",
+                    "automatic": 1
+                },
+                {
+                    "name": "Finnex 24\/7",
+                    "gpio_pin": "4",
+                    "outlet": 3,
+                    "schedule": "daylight_plan",
+                    "automatic": 1
+                },
+                {
+                    "name": "UV Filter",
+                    "gpio_pin": "1",
+                    "outlet": 4,
+                    "schedule": "uv_plan",
+                    "automatic": 1
+                }
+            ],
+            "timers": {
+                "daylight_plan": {
+                    "sunrise": "630",
+                    "sunset": "2209",
+                    "interval": 0,
+                    "default": 0,
+                    "sunriseOffset": 0,
+                    "sunsetOffset": 120
+                },
+                "co2_plan": {
+                    "sunrise": "527",
+                    "sunset": "2010",
+                    "interval": 0,
+                    "default": 0,
+                    "sunriseOffset": -60,
+                    "sunsetOffset": 0
+                },
+                "wavetimer_plan": {
+                    "sunrise": "630",
+                    "sunset": "2009",
+                    "interval": 59,
+                    "default": 0,
+                    "sunriseOffset": 0,
+                    "sunsetOffset": 0
+                },
+                "uv_plan": {
+                    "sunrise": "730",
+                    "sunset": "2009",
+                    "interval": 0,
+                    "default": 0,
+                    "sunriseOffset": 0,
+                    "sunsetOffset": 120
+                },
+                "always_on": {
+                    "sunrise": "0000",
+                    "sunset": "2359",
+                    "interval": 0,
+                    "default": 0,
+                    "sunriseOffset": 0,
+                    "sunsetOffset": 0
+                }
+            }
+        }
+    ],
+    "auto_daylight": [
+        "daylight_plan",
+        "co2_plan",
+        "wavetimer_plan",
+        "uv_plan"
+    ]
+}

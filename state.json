@@ -1,0 +1,42 @@
+{
+    "Planted Community.CO2 Solenoid": {
+        "last_update": 1492829222,
+        "last_state_change": 1492819861,
+        "last_state_change_value": 0
+    },
+    "Planted Community.Power Head": {
+        "last_update": 1492829222,
+        "last_state_change": 1492829222,
+        "last_state_change_value": "0"
+    },
+    "Planted Community.Finnex 24\/7": {
+        "last_update": 1492829222,
+        "last_state_change": 1492827002,
+        "last_state_change_value": 0
+    },
+    "Planted Community.UV Filter": {
+        "last_update": 1492829222,
+        "last_state_change": 1492819803,
+        "last_state_change_value": 0
+    },
+    "sunrise_sync": {
+        "last_update": 1492747202,
+        "last_state_change": 1492747202,
+        "last_state_change_value": {
+            "sunrise": "6:27 AM",
+            "sunset": "8:10 PM",
+            "sunrise_raw": 1492770455,
+            "sunset_raw": 1492819859
+        }
+    },
+    "3": {
+        "last_update": 1492723833,
+        "last_state_change": 1492723833,
+        "last_state_change_value": "0"
+    },
+    "": {
+        "last_update": 1492723929,
+        "last_state_change": 1492723929,
+        "last_state_change_value": "0"
+    }
+}
