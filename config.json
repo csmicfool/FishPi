@@ -48,8 +48,79 @@
                     "sunsetOffset": 120
                 },
                 "co2_plan": {
-                    "sunrise": "527",
-                    "sunset": "2010",
+                    "sunrise": "520",
+                    "sunset": "2015",
+                    "interval": 0,
+                    "default": 0,
+                    "sunriseOffset": -60,
+                    "sunsetOffset": 0
+                },
+                "wavetimer_plan": {
+                    "sunrise": "630",
+                    "sunset": "2009",
+                    "interval": 59,
+                    "default": 0,
+                    "sunriseOffset": 0,
+                    "sunsetOffset": 0
+                },
+                "uv_plan": {
+                    "sunrise": "730",
+                    "sunset": "2009",
+                    "interval": 0,
+                    "default": 0,
+                    "sunriseOffset": 0,
+                    "sunsetOffset": 120
+                },
+                "always_on": {
+                    "sunrise": "0000",
+                    "sunset": "2359",
+                    "interval": 0,
+                    "default": 0,
+                    "sunriseOffset": 0,
+                    "sunsetOffset": 0
+                }
+            }
+        },
+        {
+            "name": "Planted Aggressive",
+            "size": "45",
+            "units": "gallons",
+            "sensors": [],
+            "accessories": [
+                {
+                    "name": "CO2 Solenoid",
+                    "gpio_pin": "0",
+                    "outlet": 5,
+                    "schedule": "co2_plan",
+                    "automatic": 1
+                },
+                {
+                    "name": "Finnex 24\/7",
+                    "gpio_pin": "7",
+                    "outlet": 6,
+                    "schedule": "daylight_plan",
+                    "automatic": 1
+                },
+                {
+                    "name": "UV Filter",
+                    "gpio_pin": "9",
+                    "outlet": 7,
+                    "schedule": "uv_plan",
+                    "automatic": 1
+                }
+            ],
+            "timers": {
+                "daylight_plan": {
+                    "sunrise": "630",
+                    "sunset": "2209",
+                    "interval": 0,
+                    "default": 0,
+                    "sunriseOffset": 0,
+                    "sunsetOffset": 120
+                },
+                "co2_plan": {
+                    "sunrise": "520",
+                    "sunset": "2015",
                     "interval": 0,
                     "default": 0,
                     "sunriseOffset": -60,

@@ -169,7 +169,7 @@ $date = date('Y-m-d');
                                     </div>
                                 </div>
                                 <div class="col-xs-2">
-                                    <a href="#" onClick="toggle_manual(<?php echo $gpio ?>,'<?php echo $sname; ?>',<?php echo $tankid; ?>,<?php echo $accid; ?>);"><i data-togglestate="<?php echo $auto_toggle_state ?>" id="manual-toggle-<?php echo $gpio ?>" class="fa <?php echo $auto_toggle; ?> fa-2x"></i></a>
+                                    <a onClick="toggle_manual(<?php echo $gpio ?>,'<?php echo $sname; ?>',<?php echo $tankid; ?>,<?php echo $accid; ?>);"><i data-togglestate="<?php echo $auto_toggle_state ?>" id="manual-toggle-<?php echo $gpio ?>" class="fa <?php echo $auto_toggle; ?> fa-2x"></i></a>
                                 </div>
                                 <div class="lead col-xs-5 text-center">
                                     <div>
@@ -235,6 +235,7 @@ $date = date('Y-m-d');
 
     <!-- Custom Theme JavaScript -->
     <script src="../dist/js/sb-admin-2.js"></script>
+    <script src="../js/jquery.idle.js"></script>
     <script type="text/javascript">
       function toggle_manual(gpio,sname,tank,acc){
         var togstate = $('#manual-toggle-'+gpio).data('togglestate');
@@ -267,9 +268,14 @@ $date = date('Y-m-d');
             $.post("../utils/post_handler.php",{"action":"manual_state","value":0,"gpio":gpio,"state":sname,"tank":tank,"acc":acc})
         }
       }
-      setTimeout(function(){
-        location = ''
-      },60000)
+      $(document).ready(function(){
+        $("#wrapper").idle(
+            function(){
+                location = ''
+            },
+            { after: 60000 }
+        );
+      });
     </script>
 
 </body>
