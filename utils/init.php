@@ -35,8 +35,8 @@ foreach($config['tanks'] as $tank){
         $current_state = $state[$sname]['last_state_change_value'];
 
         $gpio = $acc['gpio_pin'];
-        $setmode = shell_exec("/usr/local/bin/gpio mode ".$gpio." out");
-        shell_exec("/usr/local/bin/gpio write ".$gpio." ".$current_state);
+        $setmode = shell_exec("gpio mode ".$gpio." out");
+        shell_exec("gpio write ".$gpio." ".$current_state);
         $state[$sname]['last_state_change'] = time();
         $state[$sname]['last_state_change_value'] = $current_state;
     

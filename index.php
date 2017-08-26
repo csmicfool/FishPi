@@ -32,11 +32,17 @@ date_default_timezone_set($config['timezone']);
 $time = (int)date('Gi');
 $date = date('Y-m-d');
 
+$chronts = filemtime('/var/log/fishpi/schedule.log');
+$chronrunning = true;
+if((time()-$chronts)>120){
+    $chronrunning = false;
+}
+
 ?><!DOCTYPE html>
 <html lang="en">
 
 <head>
-
+    <meta http-equiv="refresh" content="30"/>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -56,7 +62,7 @@ $date = date('Y-m-d');
     <link href="../dist/css/custom.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -95,12 +101,30 @@ $date = date('Y-m-d');
             <div class="row">
                 <div class="col-lg-12">
                     <h2><?php echo $tank['name']; ?></h2>
-                    <h5><?php echo $tank['size']." ".$tank['units']; ?></h5>
+                    <h5>
+                        <?php echo $tank['size']." ".$tank['units']; ?>
+                        <?php
+                            foreach($tank['sensors'] as $sensor){
+                                $sname = $tank['name'].".".$sensor['name'];
+                                if($sensor['type']=='therm'){
+                                    $class = "fa fa-thermometer";
+                                }
+                                if($sensor['type']=='pressure'){
+                                    $class = "fa fa-tachometer";
+                                }
+                                echo " | ".$sensor['name'].": <i class='".$class."' aria-hidden='true'></i> ".round($state[$sname]['last_state_change_value'],1).$sensor['unit'];
+                            }
+                        ?>
+                    </h5>
                 </div>  
                 <!-- /.col-lg-12 -->
             </div>
             <!-- /.row -->
             <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <img class="img-responsive" src="/img/tanks/<?php echo str_replace(" ","",$tank['name']); ?>.jpg" alt="<?php echo $tank['name']; ?>">    
+                    <br/>
+                </div>
             <?php
                 foreach($tank['accessories'] as $accid => $acc){
                     $sname = $tank['name'].".".$acc['name'];
@@ -138,6 +162,13 @@ $date = date('Y-m-d');
 
                     }
                     $last_state_change = $state[$sname]['last_state_change'];
+
+                    $srlen=(strlen($sched['sunrise'])-2); 
+                    $ss=date("Y-m-d").' '.substr($sched['sunrise'],0,$srlen).':'.substr($sched['sunrise'],-2);
+                    $sunrisef=date("g:i a",strtotime($ss));
+                    $sslen=(strlen($sched['sunset'])-2); 
+                    $sr=date("Y-m-d").' '.substr($sched['sunset'],0,$sslen).':'.substr($sched['sunset'],-2);
+                    $sunsetf=date("g:i a",strtotime($sr));
                 ?>
                 <div class="col-lg-3 col-md-6">
                     <div class="panel <?php echo $state_class; ?>" id="acc-panel-<?php echo $gpio ?>">
@@ -150,7 +181,7 @@ $date = date('Y-m-d');
                                 <div class="col-xs-9 text-right">
                                     <div class="huge text-nowrap"><?php echo $acc['name']; ?></div>
                                     <div><?php echo $sstate." since ".date("H:i M j, Y",$last_state_change); ?></div>
-                                    <div>Outlet #<?php echo $acc['outlet']; ?></div>
+                                    <div><i class="fa fa-sun-o" aria-hidden="true"></i> <?php echo $sunrisef; ?> | <i class="fa fa-moon-o" aria-hidden="true"></i> <?php echo $sunsetf; ?> | Outlet #<?php echo $acc['outlet']; ?></div>
                                 </div>
                             </div>
                         </div>
@@ -213,7 +244,7 @@ $date = date('Y-m-d');
                     	<i class='fa fa-sun-o'></i> <?php echo $sunrise ?> | <i class='fa fa-moon-o'></i> <?php echo $sunset ?>
                     </h5>
                     <h5 class="pull-right">
-                    	<i class='fa fa-globe'></i> <?php echo round((($sunset_raw-$sunrise_raw)/(60*60)),2); ?> Hours of Daylight
+                    	<i class='fa fa-globe'></i> <?php echo round((($sunset_raw-$sunrise_raw)/(60*60)),2); ?> Hours of Daylight<!--  | SysLoad: <?php $load=sys_getloadavg(); echo $load[0]; ?> -->
                     </h5>
         		</div>
         		<?php } ?>
@@ -236,6 +267,7 @@ $date = date('Y-m-d');
     <!-- Custom Theme JavaScript -->
     <script src="../dist/js/sb-admin-2.js"></script>
     <script src="../js/jquery.idle.js"></script>
+    <script src="https://use.fontawesome.com/742f4585af.js"></script>
     <script type="text/javascript">
       function toggle_manual(gpio,sname,tank,acc){
         var togstate = $('#manual-toggle-'+gpio).data('togglestate');
@@ -269,13 +301,16 @@ $date = date('Y-m-d');
         }
       }
       $(document).ready(function(){
-        $("#wrapper").idle(
+        $(document).idle(
             function(){
                 location = ''
             },
-            { after: 60000 }
+            { after: 5000 }
         );
       });
+      <?php if(!$chronrunning){ ?>
+      alert('Chron is not running!');   
+      <?php } ?>
     </script>
 
 </body>

@@ -61,8 +61,8 @@ if($_POST['action']=='manual_state'){
         "last_state_change"=>time(),
         "last_state_change_value"=>$manual_state
     );
-    $setmode = shell_exec("/usr/local/bin/gpio mode ".$gpio." out");
-    shell_exec("/usr/local/bin/gpio write ".$gpio." ".$manual_state);
+    $setmode = shell_exec("gpio mode ".$gpio." out");
+    shell_exec("gpio write ".$gpio." ".$manual_state);
 
     $updated = 1;
 }

@@ -1,158 +1,204 @@
 {
     "latitude": "25.7617",
-    "longitude": "-80.1918",
     "timezone": "America\/New_York",
     "tanks": [
         {
+            "webcam": "\/dev\/v4l\/by-id\/usb-046d_0825_D853B7A0-video-index0",
             "name": "Planted Community",
-            "size": "75",
-            "units": "gallons",
-            "sensors": [],
             "accessories": [
                 {
+                    "bcm_pin": 15,
                     "name": "CO2 Solenoid",
-                    "gpio_pin": "6",
-                    "outlet": 1,
                     "schedule": "co2_plan",
-                    "automatic": 1
+                    "gpio_pin": "16",
+                    "automatic": 1,
+                    "outlet": 1
                 },
                 {
+                    "bcm_pin": 18,
                     "name": "Power Head",
-                    "gpio_pin": "5",
-                    "outlet": 2,
                     "schedule": "wavetimer_plan",
-                    "automatic": 1
-                },
-                {
-                    "name": "Finnex 24\/7",
-                    "gpio_pin": "4",
-                    "outlet": 3,
-                    "schedule": "daylight_plan",
-                    "automatic": 1
-                },
-                {
-                    "name": "UV Filter",
                     "gpio_pin": "1",
-                    "outlet": 4,
+                    "automatic": 1,
+                    "outlet": 2
+                },
+                {
+                    "bcm_pin": 17,
+                    "name": "Finnex 24\/7",
+                    "schedule": "daylight_plan",
+                    "gpio_pin": "0",
+                    "automatic": 1,
+                    "outlet": 3
+                },
+                {
+                    "bcm_pin": 27,
+                    "name": "UV Filter",
                     "schedule": "uv_plan",
-                    "automatic": 1
+                    "gpio_pin": "2",
+                    "automatic": 1,
+                    "outlet": 4
                 }
             ],
             "timers": {
                 "daylight_plan": {
-                    "sunrise": "630",
-                    "sunset": "2209",
-                    "interval": 0,
-                    "default": 0,
                     "sunriseOffset": 0,
-                    "sunsetOffset": 120
-                },
-                "co2_plan": {
-                    "sunrise": "520",
-                    "sunset": "2015",
-                    "interval": 0,
+                    "sunsetOffset": 60,
                     "default": 0,
-                    "sunriseOffset": -60,
-                    "sunsetOffset": 0
+                    "interval": 0,
+                    "sunset": 2045,
+                    "sunrise": 658
                 },
                 "wavetimer_plan": {
-                    "sunrise": "630",
-                    "sunset": "2009",
-                    "interval": 59,
-                    "default": 0,
                     "sunriseOffset": 0,
-                    "sunsetOffset": 0
-                },
-                "uv_plan": {
-                    "sunrise": "730",
-                    "sunset": "2009",
-                    "interval": 0,
+                    "sunsetOffset": 0,
                     "default": 0,
-                    "sunriseOffset": 0,
-                    "sunsetOffset": 120
+                    "interval": 1,
+                    "sunset": 1945,
+                    "sunrise": 658
                 },
                 "always_on": {
-                    "sunrise": "0000",
-                    "sunset": "2359",
-                    "interval": 0,
-                    "default": 0,
                     "sunriseOffset": 0,
-                    "sunsetOffset": 0
+                    "sunsetOffset": 0,
+                    "default": 0,
+                    "interval": 0,
+                    "sunset": "2359",
+                    "sunrise": "0000"
+                },
+                "uv_plan": {
+                    "sunriseOffset": 0,
+                    "sunsetOffset": 0,
+                    "default": 0,
+                    "interval": 0,
+                    "sunset": 1945,
+                    "sunrise": 658
+                },
+                "co2_plan": {
+                    "sunriseOffset": -60,
+                    "sunsetOffset": 60,
+                    "default": 0,
+                    "interval": 0,
+                    "sunset": 2045,
+                    "sunrise": 558
                 }
-            }
+            },
+            "units": "gallons",
+            "sensors": [
+                {
+                    "name": "Temperature",
+                    "channel": "",
+                    "gain": "",
+                    "address": "28-011620f60bee",
+                    "type": "therm",
+                    "unit": "&#8457;",
+                    "mode": "1wire"
+                },
+                {
+                    "name": "CO2 Pressure",
+                    "channel": 0,
+                    "gain": "2\/3",
+                    "address": "0x48",
+                    "type": "pressure",
+                    "unit": "psi",
+                    "mode": "I2C"
+                }
+            ],
+            "size": "75"
         },
         {
+            "webcam": "\/dev\/v4l\/by-id\/usb-046d_0825_9414CE40-video-index0",
             "name": "Planted Aggressive",
-            "size": "45",
-            "units": "gallons",
-            "sensors": [],
             "accessories": [
                 {
+                    "bcm_pin": 21,
                     "name": "CO2 Solenoid",
-                    "gpio_pin": "0",
-                    "outlet": 5,
                     "schedule": "co2_plan",
-                    "automatic": 1
+                    "gpio_pin": "29",
+                    "automatic": 1,
+                    "outlet": 5
                 },
                 {
+                    "bcm_pin": 20,
                     "name": "Finnex 24\/7",
-                    "gpio_pin": "7",
-                    "outlet": 6,
                     "schedule": "daylight_plan",
-                    "automatic": 1
+                    "gpio_pin": "28",
+                    "automatic": 1,
+                    "outlet": 6
                 },
                 {
+                    "bcm_pin": 26,
                     "name": "UV Filter",
-                    "gpio_pin": "9",
-                    "outlet": 7,
                     "schedule": "uv_plan",
-                    "automatic": 1
+                    "gpio_pin": "25",
+                    "automatic": 1,
+                    "outlet": 7
                 }
             ],
             "timers": {
                 "daylight_plan": {
-                    "sunrise": "630",
-                    "sunset": "2209",
-                    "interval": 0,
-                    "default": 0,
                     "sunriseOffset": 0,
-                    "sunsetOffset": 120
-                },
-                "co2_plan": {
-                    "sunrise": "520",
-                    "sunset": "2015",
-                    "interval": 0,
+                    "sunsetOffset": 60,
                     "default": 0,
-                    "sunriseOffset": -60,
-                    "sunsetOffset": 0
+                    "interval": 0,
+                    "sunset": 2045,
+                    "sunrise": 658
                 },
                 "wavetimer_plan": {
-                    "sunrise": "630",
-                    "sunset": "2009",
+                    "sunriseOffset": 0,
+                    "sunsetOffset": 0,
+                    "default": 0,
                     "interval": 59,
-                    "default": 0,
-                    "sunriseOffset": 0,
-                    "sunsetOffset": 0
-                },
-                "uv_plan": {
-                    "sunrise": "730",
                     "sunset": "2009",
-                    "interval": 0,
-                    "default": 0,
-                    "sunriseOffset": 0,
-                    "sunsetOffset": 120
+                    "sunrise": "630"
                 },
                 "always_on": {
-                    "sunrise": "0000",
-                    "sunset": "2359",
-                    "interval": 0,
-                    "default": 0,
                     "sunriseOffset": 0,
-                    "sunsetOffset": 0
+                    "sunsetOffset": 0,
+                    "default": 0,
+                    "interval": 0,
+                    "sunset": "2359",
+                    "sunrise": "0000"
+                },
+                "uv_plan": {
+                    "sunriseOffset": 0,
+                    "sunsetOffset": 0,
+                    "default": 0,
+                    "interval": 0,
+                    "sunset": 1945,
+                    "sunrise": 658
+                },
+                "co2_plan": {
+                    "sunriseOffset": -60,
+                    "sunsetOffset": 60,
+                    "default": 0,
+                    "interval": 0,
+                    "sunset": 2045,
+                    "sunrise": 558
                 }
-            }
+            },
+            "units": "gallons",
+            "sensors": [
+                {
+                    "name": "Temperature",
+                    "gain": "",
+                    "address": "28-02161e4213ee",
+                    "type": "therm",
+                    "unit": "&#8457;",
+                    "mode": "1wire"
+                },
+                {
+                    "name": "CO2 Pressure",
+                    "channel": 1,
+                    "gain": "2\/3",
+                    "address": "0x48",
+                    "type": "pressure",
+                    "unit": "psi",
+                    "mode": "I2C"
+                }
+            ],
+            "size": "45"
         }
     ],
+    "longitude": "-80.1918",
     "auto_daylight": [
         "daylight_plan",
         "co2_plan",

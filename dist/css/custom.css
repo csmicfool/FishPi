@@ -7,3 +7,12 @@
     border-left: none;
   }
 }
+
+h2{
+	margin-top: 10px;
+}
+
+hr{
+	margin-top: 4px;
+	margin-bottom: 4px;
+}
